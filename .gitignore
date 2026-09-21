@@ -1,0 +1,8 @@
+# OS / editor junk files
+.DS_Store
+Thumbs.db
+*.log
+
+# Local IDE settings
+.vscode/
+.idea/
