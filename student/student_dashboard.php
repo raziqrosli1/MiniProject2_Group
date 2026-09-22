@@ -1,6 +1,6 @@
 <?php
-require 'config.php';
-require 'student_guard.php';
+require __DIR__ . '/../config.php';
+require __DIR__ . '/../includes/student_guard.php';
 
 $student_id = $_SESSION['user_id'];
 
@@ -26,7 +26,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     if ($row['status'] === 'Approved') $approved++;
 }
 
-include 'header.php';
+include __DIR__ . '/../includes/header.php';
 ?>
 
 <div class="card action-card banner-card mb-4">
@@ -94,4 +94,4 @@ include 'header.php';
     </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/../includes/footer.php'; ?>

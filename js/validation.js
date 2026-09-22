@@ -66,7 +66,8 @@ function checkSlot() {
         return;
     }
 
-    var url = 'ajax/check_appointment.php?staff_id=' + encodeURIComponent(staff) +
+    var base = (typeof BASE_URL !== 'undefined') ? BASE_URL : '/';
+    var url = base + 'ajax/check_appointment.php?staff_id=' + encodeURIComponent(staff) +
               '&date=' + encodeURIComponent(date) +
               '&time=' + encodeURIComponent(time);
 

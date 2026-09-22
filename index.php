@@ -4,9 +4,9 @@ require 'config.php';
 // If already logged in, go to correct dashboard
 if (isset($_SESSION['user_id'])) {
     if ($_SESSION['role'] === 'staff') {
-        header("Location: staff_dashboard.php");
+        header("Location: staff/staff_dashboard.php");
     } else {
-        header("Location: student_dashboard.php");
+        header("Location: student/student_dashboard.php");
     }
     exit;
 }
@@ -37,9 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Redirect by role
             if ($user['role'] === 'staff') {
-                header("Location: staff_dashboard.php");
+                header("Location: staff/staff_dashboard.php");
             } else {
-                header("Location: student_dashboard.php");
+                header("Location: student/student_dashboard.php");
             }
             exit;
         } else {
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-include 'header.php';
+include __DIR__ . '/includes/header.php';
 ?>
 
 <div class="auth-card">
@@ -73,4 +73,4 @@ include 'header.php';
     <p class="auth-alt">No account? <a href="register.php">Register</a></p>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/includes/footer.php'; ?>

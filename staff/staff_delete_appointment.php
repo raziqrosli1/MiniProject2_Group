@@ -1,6 +1,6 @@
 <?php
-require 'config.php';
-require 'staff_guard.php';
+require __DIR__ . '/../config.php';
+require __DIR__ . '/../includes/staff_guard.php';
 
 // Get appointment id from URL
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;

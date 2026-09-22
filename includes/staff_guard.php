@@ -4,12 +4,12 @@
 
 // Not logged in -> go to login
 if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php");
+    header("Location: " . $base_url . "index.php");
     exit;
 }
 
 // Logged in but not staff -> send to student dashboard
 if ($_SESSION['role'] !== 'staff') {
-    header("Location: student_dashboard.php");
+    header("Location: " . $base_url . "student/student_dashboard.php");
     exit;
 }

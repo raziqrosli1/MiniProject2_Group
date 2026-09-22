@@ -1,6 +1,6 @@
 <?php
-require 'config.php';
-require 'staff_guard.php';
+require __DIR__ . '/../config.php';
+require __DIR__ . '/../includes/staff_guard.php';
 
 // Read all appointments (with names) for summary + recent list
 $result = mysqli_query($conn, "
@@ -23,7 +23,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     if ($row['status'] === 'Completed') $completed++;
 }
 
-include 'header.php';
+include __DIR__ . '/../includes/header.php';
 ?>
 
 <div class="card action-card banner-card mb-4">
@@ -97,4 +97,4 @@ include 'header.php';
     </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/../includes/footer.php'; ?>

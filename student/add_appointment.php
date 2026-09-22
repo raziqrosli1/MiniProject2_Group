@@ -1,6 +1,6 @@
 <?php
-require 'config.php';
-require 'student_guard.php';
+require __DIR__ . '/../config.php';
+require __DIR__ . '/../includes/student_guard.php';
 
 $student_id = $_SESSION['user_id'];
 $message = "";
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Get staff list for dropdown
 $staffList = mysqli_query($conn, "SELECT id, name FROM users WHERE role = 'staff' ORDER BY name");
 
-include 'header.php';
+include __DIR__ . '/../includes/header.php';
 ?>
 
 <div class="page-head">
@@ -114,4 +114,4 @@ include 'header.php';
     </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/../includes/footer.php'; ?>

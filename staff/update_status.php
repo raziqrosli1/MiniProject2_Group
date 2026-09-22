@@ -1,6 +1,6 @@
 <?php
-require 'config.php';
-require 'staff_guard.php';
+require __DIR__ . '/../config.php';
+require __DIR__ . '/../includes/staff_guard.php';
 
 // Allowed status values
 $statuses = array("Pending", "Approved", "Completed", "Cancelled");

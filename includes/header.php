@@ -21,7 +21,7 @@ function nav_active($file, $current) {
     return ($file === $current) ? 'active' : '';
 }
 
-$home = $loggedIn ? ($role === 'staff' ? 'staff_dashboard.php' : 'student_dashboard.php') : 'index.php';
+$home = $loggedIn ? ($role === 'staff' ? 'staff/staff_dashboard.php' : 'student/student_dashboard.php') : 'index.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,33 +38,38 @@ $home = $loggedIn ? ($role === 'staff' ? 'staff_dashboard.php' : 'student_dashbo
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Custom design -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="<?php echo $base_url; ?>css/style.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg app-navbar">
     <div class="container">
-        <a class="navbar-brand" href="<?php echo $home; ?>">Consultation System</a>
+        <a class="navbar-brand" href="<?php echo $base_url . $home; ?>">Consultation System</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
             <ul class="navbar-nav ms-auto">
                 <?php if ($loggedIn && $role === 'student'): ?>
-                    <li class="nav-item"><a class="nav-link <?php echo nav_active('student_dashboard.php', $current); ?>" href="student_dashboard.php">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link <?php echo nav_active('add_appointment.php', $current); ?>" href="add_appointment.php">Add Appointment</a></li>
-                    <li class="nav-item"><a class="nav-link <?php echo nav_active('my_appointments.php', $current); ?>" href="my_appointments.php">My Appointments</a></li>
-                    <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link <?php echo nav_active('student_dashboard.php', $current); ?>" href="<?php echo $base_url; ?>student/student_dashboard.php">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link <?php echo nav_active('add_appointment.php', $current); ?>" href="<?php echo $base_url; ?>student/add_appointment.php">Add Appointment</a></li>
+                    <li class="nav-item"><a class="nav-link <?php echo nav_active('my_appointments.php', $current); ?>" href="<?php echo $base_url; ?>student/my_appointments.php">My Appointments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo $base_url; ?>logout.php">Logout</a></li>
                 <?php elseif ($loggedIn && $role === 'staff'): ?>
-                    <li class="nav-item"><a class="nav-link <?php echo nav_active('staff_dashboard.php', $current); ?>" href="staff_dashboard.php">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link <?php echo nav_active('manage_appointments.php', $current); ?>" href="manage_appointments.php">Manage Appointments</a></li>
-                    <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link <?php echo nav_active('staff_dashboard.php', $current); ?>" href="<?php echo $base_url; ?>staff/staff_dashboard.php">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link <?php echo nav_active('manage_appointments.php', $current); ?>" href="<?php echo $base_url; ?>staff/manage_appointments.php">Manage Appointments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo $base_url; ?>logout.php">Logout</a></li>
                 <?php else: ?>
-                    <li class="nav-item"><a class="nav-link <?php echo nav_active('index.php', $current); ?>" href="index.php">Login</a></li>
-                    <li class="nav-item"><a class="nav-link <?php echo nav_active('register.php', $current); ?>" href="register.php">Register</a></li>
+                    <li class="nav-item"><a class="nav-link <?php echo nav_active('index.php', $current); ?>" href="<?php echo $base_url; ?>index.php">Login</a></li>
+                    <li class="nav-item"><a class="nav-link <?php echo nav_active('register.php', $current); ?>" href="<?php echo $base_url; ?>register.php">Register</a></li>
                 <?php endif; ?>
             </ul>
         </div>
     </div>
 </nav>
+
+<script>
+    // Base URL for JavaScript (used by AJAX requests) - matches PHP $base_url
+    var BASE_URL = "<?php echo $base_url; ?>";
+</script>
 
 <div class="container page-container">

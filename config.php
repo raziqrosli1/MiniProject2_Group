@@ -28,3 +28,15 @@ if (!$conn) {
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// Base URL: root folder of the project (works on both localhost/XAMPP and live hosting)
+// config.php always lives in the project root, so its own web path IS the base path.
+// Example on XAMPP: /MiniProject2_Group/   |   Example on live hosting: /
+$base_url = str_replace('config.php', '', $_SERVER['SCRIPT_NAME']);
+if (strpos($_SERVER['SCRIPT_NAME'], 'config.php') === false) {
+    // config.php was required from a page in a sub-folder (student/, staff/, includes/, ajax/)
+    // so we work it out from the current script's folder depth instead.
+    $scriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+    $base_url = preg_replace('#/(student|staff|includes|ajax)$#', '', $scriptDir);
+}
+$base_url = rtrim($base_url, '/') . '/';

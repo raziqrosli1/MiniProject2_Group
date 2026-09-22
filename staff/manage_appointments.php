@@ -1,6 +1,6 @@
 <?php
-require 'config.php';
-require 'staff_guard.php';
+require __DIR__ . '/../config.php';
+require __DIR__ . '/../includes/staff_guard.php';
 
 // Get all appointments with student and staff names
 $result = mysqli_query($conn, "
@@ -15,7 +15,7 @@ $result = mysqli_query($conn, "
 // Status options
 $statuses = array("Pending", "Approved", "Completed", "Cancelled");
 
-include 'header.php';
+include __DIR__ . '/../includes/header.php';
 ?>
 
 <div class="page-head">
@@ -80,4 +80,4 @@ include 'header.php';
 </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/../includes/footer.php'; ?>

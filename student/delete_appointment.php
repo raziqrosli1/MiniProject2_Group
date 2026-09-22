@@ -1,6 +1,6 @@
 <?php
-require 'config.php';
-require 'student_guard.php';
+require __DIR__ . '/../config.php';
+require __DIR__ . '/../includes/student_guard.php';
 
 $student_id = $_SESSION['user_id'];
 

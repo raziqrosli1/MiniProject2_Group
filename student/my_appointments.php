@@ -1,6 +1,6 @@
 <?php
-require 'config.php';
-require 'student_guard.php';
+require __DIR__ . '/../config.php';
+require __DIR__ . '/../includes/student_guard.php';
 
 $student_id = $_SESSION['user_id'];
 
@@ -16,7 +16,7 @@ mysqli_stmt_bind_param($stmt, "i", $student_id);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
-include 'header.php';
+include __DIR__ . '/../includes/header.php';
 ?>
 
 <div class="page-head d-flex justify-content-between align-items-center">
@@ -65,4 +65,4 @@ include 'header.php';
 </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include __DIR__ . '/../includes/footer.php'; ?>
